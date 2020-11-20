@@ -1,0 +1,31 @@
+.flex {
+  display: flex;
+  border: 1px solid;
+}
+
+.flex-row { flex-direction: row; }
+.flex-column { flex-direction: column; }
+.items-center { align-items: center; }
+.self-start { align-self: flex-start; }
+
+.block {
+  display: block;
+}
+
+.icon {
+  font-size: 24px;
+}
+
+@media screen and (max-width: 767px) {
+  .items-center-sm {
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .hide-md {
+    display: none!important;
+  }
+  .flex-column-md { flex-direction: column; }
+}
+

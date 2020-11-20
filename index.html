@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles/normalize.css">
+  <link rel="stylesheet" href="./styles/utilities.css">
+  <link rel="stylesheet" href="./styles/main.css">
+  <title>Github Profile Clone</title>
+</head>
+<body>
+  <header class="header">
+    <div class="header-item header--top">
+      <span class="icon hide-md"><i data-feather="menu"></i></span>
+      <span class="logo icon"><i data-feather="github"></i></span>
+      <span class="hide-md"><i data-feather="bell"></i></span>
+    </div>
+    <div class="header-item header__search">
+      <form action="">
+        <label for="">
+          <input type="text" placeholder="Search or jump to...">
+          <span class="search-icon hide-md"><i data-feather="edit-2"></i></span>
+        </label>
+      </form>
+    </div>
+    <nav class="header-item header__nav">
+      <ul>
+        <li class="hide-md">Dashboard</li>
+        <li>Pull requests</li>
+        <li>Issues</li>
+        <li>Marketplace</li>
+        <li>Explore</li>
+      </ul>
+      <ul>
+        <li><i data-feather="bell"></i></li>
+        <li><i data-feather="plus"></i></li>
+        <li>me</li>
+        <li class="hide-md">signout</li>
+      </ul>
+    </nav>
+  </header>
+  <main class="content">
+    <div class="summary">
+      <div class="flex items-center flex-column-md">
+        <div class="user__image">
+          <img height="260" width="260" src="https://res.cloudinary.com/bitkoin/image/upload/v1605131940/frontend_dev_example.png" alt="">
+        </div>
+        <div class="self-start">
+          <h2>Esther Falayi</h2>
+          <span class="block">Usernamer</span>
+          <span class="block">Tags</span>
+        </div>
+      </div>
+    </div>
+    <div class="activities">
+      <header class="activities-header">
+        <nav class="activities-header__nav">
+          <ul>
+            <li>Overview</li>
+            <li class="active">Repositories</li>
+            <li>Projects</li>
+            <li>Packages</li>
+          </ul>
+        </nav>
+      </header>
+      <div class="activities-content">
+        <span class="result">
+          <span>124 results for public repositories</span>
+        </span>
+        <ul class="repositories">
+          <li class="repository">
+            <div class="repository__name">
+              <a href="">
+                <h3>Repository name</h3>
+              </a>
+              <span>Updated 5 mins ago</span>
+            </div>
+            <span class="repository__star">
+              <span class="icon"><i data-feather="star"></i></span>
+              <span>Star</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  <script>
+    feather.replace({ width: '1em', height: '1em' })
+  </script>
+</body>
+</html>
