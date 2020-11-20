@@ -9,10 +9,6 @@
   --border-radius: 4px;
 }
 
-/* html {
-  font-size: 100%;
-} */
-
 body {
   width: 100%;
   background-color: var(--bg-color);
@@ -235,7 +231,6 @@ ul {
     height: 256px;
     width: 256px;
     margin-right: 0rem;
-    /* z-index: 1; */
   }
 }
 
