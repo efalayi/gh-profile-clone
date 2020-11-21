@@ -16,8 +16,15 @@
   vertical-align: middle;
 }
 
+.octicon {
+  display: inline-block;
+  vertical-align: text-top;
+  fill: currentColor;
+}
+
 /* Margins */
 .mr-1 { margin-right: 0.25rem; }
+.mr-2 { margin-right: 0.5rem; }
 
 @media screen and (max-width: 767px) {
   .items-center-sm {
