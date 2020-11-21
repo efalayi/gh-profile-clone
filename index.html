@@ -43,12 +43,12 @@
     <div class="summary">
       <div class="flex items-center flex-column-md">
         <div class="user__image">
-          <img height="260" width="260" src="https://res.cloudinary.com/bitkoin/image/upload/v1605131940/frontend_dev_example.png" alt="">
+          <!-- <img height="260" width="260" src="https://res.cloudinary.com/bitkoin/image/upload/v1605131940/frontend_dev_example.png" alt="User Image"> -->
         </div>
         <div class="self-start">
-          <h2>Esther Falayi</h2>
-          <span class="block bio">Usernamer</span>
-          <span class="block">Tags</span>
+          <h2 id="user-full-name">Esther Falayi</h2>
+          <span id="username" class="block"></span>
+          <span id="user-bio" class="block"></span>
         </div>
       </div>
     </div>
@@ -67,24 +67,30 @@
         <span class="result">
           <span>124 results for public repositories</span>
         </span>
-        <ul class="repositories">
-          <li class="repository">
+        <ul id="repositories" class="repositories">
+          <!-- <li class="repository">
             <div class="repository__name">
               <a href="">
                 <h3>Repository name</h3>
               </a>
-              <span>Updated 5 mins ago</span>
+              <span id="description" class="flex">
+                <span id="language" class="description__item">HTML</span>
+                <span id="stargazer-count" class="description__item">STAR</span>
+                <span id="fork-count" class="description__item">FORKS</span>
+                <span id="updated-at" class="description__item">Updated 5 mins ago</span>
+              </span>
             </div>
             <span class="repository__star">
               <span class="icon"><i data-feather="star"></i></span>
               <span>Star</span>
             </span>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
   </main>
-  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script> -->
+  <script src="https://unpkg.com/feather-icons"></script>
   <script>
     feather.replace({ width: '1em', height: '1em' })
   </script>

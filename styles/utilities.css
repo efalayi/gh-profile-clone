@@ -1,6 +1,6 @@
 .flex {
   display: flex;
-  border: 1px solid;
+  /* border: 1px solid; */
 }
 .flex-row { flex-direction: row; }
 .flex-column { flex-direction: column; }
@@ -13,7 +13,11 @@
 
 .icon {
   font-size: 24px;
+  vertical-align: middle;
 }
+
+/* Margins */
+.mr-1 { margin-right: 0.25rem; }
 
 @media screen and (max-width: 767px) {
   .items-center-sm {
