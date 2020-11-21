@@ -84,12 +84,7 @@
         </nav>
       </header>
       <div class="activities-content">
-        <span class="result">
-          <span>
-            <span id="result-count"></span>
-            results for <b>public</b> repositories
-          </span>
-        </span>
+        <span id="result"></span>
         <ul id="repositories" class="repositories"></ul>
       </div>
     </div>
@@ -98,6 +93,6 @@
   <script>
     feather.replace({ width: '1em', height: '1em' })
   </script>
-  <script src="./scripts/api.js"></script>
+  <script type="module" src="./scripts/api.js"></script>
 </body>
 </html>
