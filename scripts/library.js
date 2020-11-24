@@ -22,10 +22,6 @@ export function formatDate(dateString) {
   const currentDate = Date.now()
   const dateObject = new Date(dateString)
 
-  // const dateDiff = dateObject - currentDate
-
-  // console.log('dateDiff: ', dateDiff)
-
   const monthIndex = dateObject.getMonth()
   const day = dateObject.getDate()
   const month = MONTHS[monthIndex].slice(0, 3)

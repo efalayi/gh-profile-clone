@@ -1,13 +1,13 @@
 :root {
   --bg-color: #fff;
   --primary-color: green;
-  --color-text: #0366d6;
-  --color-border: #e1e4e8;
-  --color-nav-text: #24292e;
-  --color-nav-text-active: #24292e;
+  --color-border: #E1E4E8;
+  --color-border-hsl: hsla(0, 0%, 100%, 0.15);
+  --color-text-primary: #24292E;
+  --color-nav-text-active: #24292E;
   --color-avatar-border: #00000000;
   --color-counter-bg: rgba(209, 213, 218, 0.5);
-  --color-text-link: #0366d6;
+  --color-text-link: #0366D6;
   --color-text-secondary: #586069;
   --border-radius: 4px;
 }
@@ -18,9 +18,11 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica,Arial,sans-serif, Apple Color Emoji, Segoe UI Emoji;
   font-size: 14px;
   line-height: 1.5;
+  color: var(--color-text-primary);
 }
 
 h3 {
+  font-size: 1.25rem;
   margin: 0em 0.2em 0em;
 }
 
@@ -36,11 +38,40 @@ a {
 }
 a:hover { text-decoration: underline; }
 
+input {
+  min-height: 28px;
+  width: 100%;
+  padding: 0rem 0.8rem;
+  background-color: inherit;
+  color: inherit;
+  outline: none;
+  border: 0;
+}
+
+.search label {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  vertical-align: middle;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-border-hsl);
+}
+
 #result {
   display: block;
   padding: 1rem 0rem;
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
+}
+
+.logo {
+  display: block;
+  height: 32px;
+  width: 32px;
+}
+.logo svg {
+  height: 100%;
+  width: 100%;
 }
 
 .header {
@@ -62,22 +93,6 @@ a:hover { text-decoration: underline; }
   margin-bottom: 1rem;
 }
 
-.header__search label {
-  display: flex;
-  align-items: center;
-  background-color: transparent;
-  vertical-align: middle;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--color-border);
-}
-.header__search input {
-  flex: 1;
-  min-height: 28px;
-  padding: 0rem 0.8rem;
-  background-color: inherit;
-  outline: none;
-  border: 0;
-}
 .search-icon {
   position: relative;
   display: flex;
@@ -87,13 +102,16 @@ a:hover { text-decoration: underline; }
   margin-right: 1rem;
   font-size: 8px;
   border-radius: var(--border-radius);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-hsl);
 }
 
 .header__nav li {
+  /* display: flex;
+  align-items: center; */
   padding: 0.5rem 0rem;
   font-weight: 600;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-border-hsl);
+  /* border-color: hsla(0, 0%, 100%, 0.15); */
 }
 
 .content {
@@ -113,9 +131,9 @@ a:hover { text-decoration: underline; }
   flex: 1;
 }
 
-.user__image {
-  /* height: 64px; */
-  /* width: 64px; */
+.user__image, .user__avatar {
+  display: inline-block;
+  height: auto;
   border-radius: 50%;
   margin-right: 1rem;
   overflow: hidden;
@@ -123,27 +141,78 @@ a:hover { text-decoration: underline; }
   -moz-box-shadow:    0px 0px 0px 1px var(--color-avatar-border);  /* Firefox 3.5 - 3.6 */
   box-shadow:         0px 0px 0px 1px var(--color-avatar-border);
 }
+.user__image img, .user__avatar img {
+  border-radius: 50%;
+}
+.user__avatar {
+  vertical-align: middle;
+}
 
 .user__image img {
   height: 100%;
   width: 100%;
   object-fit: cover;
+  border-radius: 50%;
+}
+.user__status {
+  position: absolute;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  width: 100%;
+  height: 36px;
+  width: 36px;
+  left: 100%;
+  margin-left: -3rem;
+  margin-bottom: 56px;
+  border-radius: 50%;
+  border: 1px solid #e1e4e8;
+  background-color: #FFFFFF;
+  cursor: pointer;
+}
+.user__status .set-status {
+  display: none;
+  margin: 0rem 0.5rem;
+}
+
+.user__status:hover {
+  /* width: auto;
+  max-width: 120px; */
+  justify-content: flex-start;
+  width: 120px;
+  border-radius: 2em;
+}
+.user__status:hover .set-status {
+  display: inline-block;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+#user-full-name {
+  margin-bottom: 2px;
 }
 
 .activities-header {
+  position: relative;
+  height: 48px;
   width: 100%;
-  color: var(--color-nav-text);
+  color: var(--color-text-primary);
   padding-top: 1rem;
   border-bottom: 1px solid var(--color-border);
 }
 
 .activities-header__nav {
+  height: 100%;
   width: 100%;
   overflow: hidden;
 }
 
 .activities-header__nav ul {
   display: flex;
+  height: 100%;
   width: 100%;
   overflow: scroll;
 }
@@ -152,6 +221,11 @@ a:hover { text-decoration: underline; }
   display: inline-flex;
   align-items: center;
   padding: 1rem;
+  cursor: pointer;
+}
+
+.activities-header__nav li .octicon {
+  color: #959DA5;
 }
 
 .activities-header__nav ul li:last-child {
@@ -159,13 +233,19 @@ a:hover { text-decoration: underline; }
 }
 
 .activities-header__nav ul li.active {
-  font-weight: 800;
+  font-weight: 600;
   color: var(--color-nav-text-active);
-  border-bottom: 1px solid red;
+  border-bottom: 2px solid #f9826c;
+}
+.activities-header__nav ul li.disabled {
+  cursor: not-allowed;
 }
 
 .activities-content {
   padding: 1rem;
+}
+.activities-content .search label {
+  border-color: var(--color-border);
 }
 
 .repositories { padding: 0.5rem 0rem;}
@@ -189,13 +269,19 @@ a:hover { text-decoration: underline; }
 .repository__star {
   display: inline-flex;
   align-items: center;
-  font-size: 14px;
+  font-size: 12px;
+  color: var(--color-text-primary);
+  background-color: #fafbfc;
   padding: 0.25rem 0.5rem;
   border-radius: var(--border-radius);
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  cursor: pointer;
+  transition: .2s;
+  transition-property: color, background-color;
 }
+.repository__star .octicon { color: #6A737D;}
+.repository__star:hover { background-color: #f3f4f6; }
 
-.repository__star .icon { font-size: inherit; margin-right: 0.5rem; }
 
 @media screen and (min-width: 768px) {
   .header {
@@ -229,35 +315,30 @@ a:hover { text-decoration: underline; }
     flex-direction: row;
   }
 
-  .summary {
-    position: relative;
-    flex: 0 1 25%;
-    border: 1px solid;
-  }
-
-  .summary::before {
+  .content::before {
     display: block;
     position: absolute;
     left: 0;
     right: 0;
-    top: 4.5rem;
     content: " ";
     width: 100%;
-    /* margin-top: 1px; */
+    height: 48px;
+    padding-top: 1rem;
     border-bottom: 1px solid var(--color-border);
     z-index: -1;
   }
-  
-  .activities {
-    flex: 0 1 75%;
-    border: 1px solid;
-  }
+  .activities-header { border-bottom: 0; }
 
-  .user__image {
-    height: 256px;
-    width: 256px;
-    margin-right: 0rem;
+  .summary {
+    position: relative;
+    flex: 0 1 25%;
+    padding: 2.5rem 3rem 1rem;
   }
+  
+  .activities { flex: 0 1 75%; }
+
+  .user__image { margin-right: 0rem; }
+  .user__status { display: flex; }
 }
 
 
