@@ -75,7 +75,7 @@ function createRepositoryElement(node) {
 
   repoContainer.innerHTML = `
     <div class="w-75">
-      <a href=${resourcePath}>
+      <a href="https://github.com${resourcePath}" target="_blank">
         <h3>${name}</h3>
       </a>
       <span class="block mt-2 mb-2 text--grey">${description || ''}</span>
