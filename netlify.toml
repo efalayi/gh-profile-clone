@@ -4,3 +4,4 @@
 [dev]
   functions = "functions/"
   framework = "#static"
+  
