@@ -185,4 +185,19 @@ async function init () {
   }
 }
 
-window.onload = init
+function handleMenuClick(event) {
+  const headerElement = document.querySelector('.header')
+
+  headerElement.classList.toggle('menu-show')
+}
+
+function loadEventListeners() {
+  const menuButton = document.querySelector('#menu')
+
+  menuButton.addEventListener('click', handleMenuClick)
+}
+
+window.onload = function () {
+  init()
+  loadEventListeners()
+}
