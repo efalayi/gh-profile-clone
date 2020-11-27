@@ -38,6 +38,7 @@
 
 /* Text */
 .text--grey { color: var(--color-text-secondary); }
+.overflow-hidden { overflow: hidden; }
 
 .badge {
   margin-left: 0.5rem;

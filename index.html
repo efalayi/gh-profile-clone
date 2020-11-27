@@ -31,8 +31,8 @@
     <div class="header-subitems">
       <div class="header-item header__search">
         <form class="search" action="">
-          <label for="">
-            <input type="text" placeholder="Search or jump to...">
+          <label for="nav-search">
+            <input id="nav-search" type="text" placeholder="Search or jump to...">
             <span class="search-icon"><i data-feather="edit-2"></i></span>
           </label>
         </form>
@@ -75,16 +75,7 @@
     </div>
   </header>
   <main class="content">
-    <div class="summary">
-      <div class="relative flex items-center flex-column-md">
-        <div class="user__image"></div>
-        <div class="self-start">
-          <h2 id="user-full-name"></h2>
-          <span class="username block text--grey"></span>
-          <span id="user-bio" class="block mt-4"></span>
-        </div>
-      </div>
-    </div>
+    <div class="summary empty"></div>
     <div class="activities">
       <header class="activities-header">
         <nav class="activities-header__nav">
@@ -123,8 +114,8 @@
             <input id="repository-search-input" type="search" placeholder="Find a repository">
           </label>
         </form>
-        <span id="result"></span>
-        <ul id="repositories" class="repositories"></ul>
+        <span id="result" class="empty"></span>
+        <ul id="repositories" class="repositories empty"></ul>
       </div>
     </div>
   </main>

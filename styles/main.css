@@ -12,6 +12,19 @@
   --border-radius: 6px;
 }
 
+/* Animations */
+@keyframes gradient-animation {
+  0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
 body {
   width: 100%;
   background-color: var(--bg-color);
@@ -67,7 +80,7 @@ input {
   border: 0;
 }
 
-#result {
+#result:not(:empty) {
   display: block;
   padding: 1rem 0rem;
   border-top: 1px solid var(--color-border);
@@ -257,7 +270,7 @@ input {
   border-color: var(--color-border);
 }
 
-.repositories { padding: 0.5rem 0rem;}
+.repositories { padding: 0.5rem 0rem; }
 .repository {
   display: flex;
   align-items: center;
@@ -288,6 +301,21 @@ input {
 }
 .repository__star .octicon { color: #6A737D;}
 .repository__star:hover { background-color: #f3f4f6; }
+
+/* Empty state */
+.empty:empty {
+  display: block;
+  padding: 1rem 0rem;
+  margin-bottom: 1rem;
+  border-radius: var(--border-radius);
+  background: linear-gradient(90deg, rgba(242, 242, 242, 1) 0, rgba(242, 242, 242, 0.2) 50%, rgba(242, 242, 242, 1) 100%);
+	background-size: 400% 400%;
+	animation: gradient-animation 3s ease infinite;
+}
+
+.summary.empty:empty {
+  margin: 1rem 1rem;
+}
 
 
 @media screen and (min-width: 768px) {
@@ -345,6 +373,10 @@ input {
     position: relative;
     flex: 0 1 25%;
     padding: 2.5rem 3rem 1rem;
+  }
+
+  .summary.empty:empty {
+    margin-top: 5rem;
   }
   
   .activities { flex: 0 1 75%; }

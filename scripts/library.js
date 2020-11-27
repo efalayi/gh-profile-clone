@@ -1,5 +1,11 @@
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
+/**
+ * @function httpRequest
+ * @summary executes an HTTP request
+ * @param {Array} fetch API function parameters
+ * @returns {Promise}
+ */
 export async function httpRequest(...args) {
   const response = await fetch(...args)
   const { status } = response
@@ -17,7 +23,12 @@ export async function httpRequest(...args) {
   })
 }
 
-
+/**
+ * @function formatDate
+ * @summary formats a date string
+ * @param {String} dateString
+ * @returns {String} formattedDate
+ */
 export function formatDate(dateString) {
   const currentDate = Date.now()
   const dateObject = new Date(dateString)

@@ -1,5 +1,10 @@
 import { httpRequest, formatDate } from './library.js'
 
+/**
+ * @function fetchTotalRepositoryCount
+ * @summary fetches total count of user's repositotries from API
+ * @returns {Object}
+ */
 async function fetchTotalRepositoryCount() {
   try {
     const { data: { token } } = await httpRequest('/.netlify/functions/auth')
@@ -26,6 +31,11 @@ async function fetchTotalRepositoryCount() {
   }
 }
 
+/**
+ * @function fetchUserData
+ * @summary fetches user data from API
+ * @returns {Object}
+ */
 async function fetchUserData() {
   try {
     const { data: { token } } = await httpRequest('/.netlify/functions/auth')
@@ -68,6 +78,12 @@ async function fetchUserData() {
   }
 }
 
+/**
+ * @function createRepositoryElement
+ * @summary creates a DOM element for a repository data item
+ * @param {Object} node - repository data
+ * @returns {String} created DOM element
+ */
 function createRepositoryElement(node) {
   const { resourcePath, name, description, updatedAt, primaryLanguage, forkCount, stargazerCount } = node
   const repoContainer = document.createElement('li')
@@ -112,35 +128,46 @@ function createRepositoryElement(node) {
   return repoContainer
 }
 
+/**
+ * @function displayProfileSummary
+ * @summary displays user profile summary
+ * @param {Object} profileInfo
+ */
 function displayProfileSummary(profileInfo) {
-  const userFullNameElement = document.querySelector('#user-full-name')
+  const summaryContainer = document.querySelector('.summary')
   const userNameElements = document.querySelectorAll('.username')
-  const userBioElement = document.querySelector('#user-bio')
-  const userImageContainerElement = document.querySelector('.user__image')
-  const userStatusElement = document.createElement('span')
 
-  userStatusElement.className = 'user__status'
-  userStatusElement.innerHTML = `
-    <span class="pr-2 pl-2">
-      <svg class="octicon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
-        <path fill-rule="evenodd" d="M1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0zM8 0a8 8 0 100 16A8 8 0 008 0zM5 8a1 1 0 100-2 1 1 0 000 2zm7-1a1 1 0 11-2 0 1 1 0 012 0zM5.32 9.636a.75.75 0 011.038.175l.007.009c.103.118.22.222.35.31.264.178.683.37 1.285.37.602 0 1.02-.192 1.285-.371.13-.088.247-.192.35-.31l.007-.008a.75.75 0 111.222.87l-.614-.431c.614.43.614.431.613.431v.001l-.001.002-.002.003-.005.007-.014.019a1.984 1.984 0 01-.184.213c-.16.166-.338.316-.53.445-.63.418-1.37.638-2.127.629-.946 0-1.652-.308-2.126-.63a3.32 3.32 0 01-.715-.657l-.014-.02-.005-.006-.002-.003v-.002h-.001l.613-.432-.614.43a.75.75 0 01.183-1.044h.001z"></path>
-      </svg>
-      <span class="set-status">Set Status</span>
-    </span>
+  summaryContainer.innerHTML = `
+    <div class="relative flex items-center flex-column-md">
+      <div class="user__image empty-avatar">
+        <img src="${profileInfo.avatarUrl}" height="260" width="260" alt="${profileInfo.name}">
+      </div>
+      <span class="user__status">
+        <span class="pr-2 pl-2">
+          <svg class="octicon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+            <path fill-rule="evenodd" d="M1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0zM8 0a8 8 0 100 16A8 8 0 008 0zM5 8a1 1 0 100-2 1 1 0 000 2zm7-1a1 1 0 11-2 0 1 1 0 012 0zM5.32 9.636a.75.75 0 011.038.175l.007.009c.103.118.22.222.35.31.264.178.683.37 1.285.37.602 0 1.02-.192 1.285-.371.13-.088.247-.192.35-.31l.007-.008a.75.75 0 111.222.87l-.614-.431c.614.43.614.431.613.431v.001l-.001.002-.002.003-.005.007-.014.019a1.984 1.984 0 01-.184.213c-.16.166-.338.316-.53.445-.63.418-1.37.638-2.127.629-.946 0-1.652-.308-2.126-.63a3.32 3.32 0 01-.715-.657l-.014-.02-.005-.006-.002-.003v-.002h-.001l.613-.432-.614.43a.75.75 0 01.183-1.044h.001z"></path>
+          </svg>
+          <span class="set-status">Set Status</span>
+        </span>
+      </span>
+      <div class="w-100 self-start overflow-hidden">
+        <h2 id="user-full-name">${profileInfo.name}</h2>
+        <span class="username block text--grey">${profileInfo.login}</span>
+        <span id="user-bio" class="block mt-4">${profileInfo.bio}</span>
+      </div>
+    </div>
   `
-
-  userImageContainerElement.innerHTML =  `
-    <img src="${profileInfo.avatarUrl}" height="260" width="260" alt="${profileInfo.name}">
-  `
-  userImageContainerElement.insertAdjacentElement('beforeend', userStatusElement)
-
-  userFullNameElement.innerHTML = profileInfo.name
-  userBioElement.innerHTML = profileInfo.bio
 
   // update username
   userNameElements.forEach((element) => element.innerHTML = profileInfo.login)
 }
 
+/**
+ * @function displayUserAvatar
+ * @summary displays user's name and avatar image on DOM
+ * @param {String} profileImage
+ * @param {String} userName
+ */
 function displayUserAvatar(profileImage, userName) {
   const userAvatarElement = document.querySelector('.user__avatar')
 
@@ -149,11 +176,21 @@ function displayUserAvatar(profileImage, userName) {
   `
 }
 
+/**
+ * @function appendRepoCount
+ * @summary updates total repo count on Repositories tab
+ * @param {Number} totalCount
+ */
 function appendRepoCount(totalCount) {
   const repoCountContainer = document.querySelector('#repo-count')
   repoCountContainer.innerHTML = totalCount
 }
 
+/**
+ * @function displayRepositories
+ * @summary displays list of repositories on DOM
+ * @param {Object} repositories
+ */
 function displayRepositories(repositories) {
   console.log('repositories: ', repositories)
   const { totalCount, nodes } = repositories
@@ -170,6 +207,10 @@ function displayRepositories(repositories) {
   })
 }
 
+/**
+ * @function init
+ * @summary fetches user's data and updates DOM view
+ */
 async function init () {
   try {
     const { data } = await fetchUserData();
@@ -185,12 +226,21 @@ async function init () {
   }
 }
 
+/**
+ * @function handleMenuClick
+ * @summary handles navigation dropdown on mobile
+ * @param {Object} event
+ */
 function handleMenuClick(event) {
   const headerElement = document.querySelector('.header')
 
   headerElement.classList.toggle('menu-show')
 }
 
+/**
+ * @function loadEventListeners
+ * @summary loads event listeners on DOM
+ */
 function loadEventListeners() {
   const menuButton = document.querySelector('#menu')
 
